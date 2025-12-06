@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckIcon, Minus, Plus } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const plans = [
   {
     title: "Micro Business",
-    monthlyPrice: 550,
-    annuallyPrice: Math.round(550 * 12 * 0.85),
+    monthlyPrice: "$450–$650",
+    annuallyPrice: "$450–$650",
     setup: "$1,200–$1,500",
     desc: "Solo operators, small operations (≤15 calls/day)",
     features: [
@@ -22,8 +21,8 @@ const plans = [
   },
   {
     title: "Small Business",
-    monthlyPrice: 925,
-    annuallyPrice: Math.round(925 * 12 * 0.85),
+    monthlyPrice: "$750–$1,100",
+    annuallyPrice: "$750–$1,100",
     setup: "$1,800–$2,200",
     desc: "Salons, small shops (15-40 calls/day)",
     features: [
@@ -38,8 +37,8 @@ const plans = [
   },
   {
     title: "Medium Business",
-    monthlyPrice: 1500,
-    annuallyPrice: Math.round(1500 * 12 * 0.85),
+    monthlyPrice: "$1,200–$1,800",
+    annuallyPrice: "$1,200–$1,800",
     setup: "$2,800–$3,500",
     desc: "Busy restaurants, gyms (40-80 calls/day)",
     features: [
@@ -53,8 +52,8 @@ const plans = [
   },
   {
     title: "High Volume",
-    monthlyPrice: 2500,
-    annuallyPrice: Math.round(2500 * 12 * 0.85),
+    monthlyPrice: "$2,000–$3,000",
+    annuallyPrice: "$2,000–$3,000",
     setup: "$4,500–$6,000",
     desc: "Med spas, clinics (80-150 calls/day)",
     features: [
@@ -68,8 +67,8 @@ const plans = [
   },
   {
     title: "Enterprise",
-    monthlyPrice: 4750,
-    annuallyPrice: Math.round(4750 * 12 * 0.85),
+    monthlyPrice: "$3,500–$6,000+",
+    annuallyPrice: "$3,500–$6,000+",
     setup: "$8,000–$15,000",
     desc: "Multi-location operations (150+ calls/day)",
     features: [
@@ -86,11 +85,9 @@ const plans = [
 const PlanCard = ({
   plan,
   billing,
-  users,
 }: {
   plan: typeof plans[0];
   billing: "monthly" | "annual";
-  users: number;
 }) => {
   const price = billing === "annual" ? plan.annuallyPrice : plan.monthlyPrice;
 
@@ -119,9 +116,9 @@ const PlanCard = ({
       <div className={cn("p-4 sm:p-6 flex flex-col items-start w-full relative", plan.popular && "pt-8 sm:pt-10")}>
         <h2 className="font-semibold text-sm sm:text-base text-foreground">{plan.title}</h2>
         <h3 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-bold">
-          ${Math.round(price * users).toLocaleString()}
+          {price}
           <span className="text-xs sm:text-sm font-normal text-muted-foreground">
-            /{billing === "monthly" ? "mo" : "yr"}
+            /mo
           </span>
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2">{plan.desc}</p>
@@ -130,25 +127,14 @@ const PlanCard = ({
 
       <div className="flex flex-col items-start w-full px-4 sm:px-6 pb-4 sm:pb-6">
         <Button size="lg" className="w-full text-xs sm:text-sm" asChild>
-          <a href="https://calendar.google.com/calendar/u/0?cid=Y29yYWhhaS50eEBnbWFpbC5jb20" target="_blank" rel="noopener noreferrer">
+          <a href="https://calendly.com/corahai/30min?month=2025-12" target="_blank" rel="noopener noreferrer">
             Schedule Consultation
           </a>
         </Button>
         <div className="h-8 overflow-hidden w-full mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={billing}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="text-xs text-center text-muted-foreground mt-3 mx-auto block"
-            >
-              {billing === "monthly"
-                ? "Billed monthly"
-                : `Save 15% - Billed annually`}
-            </motion.span>
-          </AnimatePresence>
+          <p className="text-xs text-center text-muted-foreground mt-3 mx-auto block">
+            Custom pricing based on needs
+          </p>
         </div>
       </div>
 
@@ -166,8 +152,7 @@ const PlanCard = ({
 };
 
 export default function PricingSection() {
-  const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
-  const [users, setUsers] = useState(1);
+  const [billing] = useState<"monthly" | "annual">("monthly");
 
   return (
     <section id="pricing" className="py-12 md:py-16 bg-background">
@@ -182,56 +167,10 @@ export default function PricingSection() {
           </p>
         </div>
 
-        {/* Controls */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 mb-8 sm:mb-12">
-          <div className="flex bg-secondary rounded-full p-1 w-full sm:w-auto">
-            <button
-              className={cn(
-                "flex-1 sm:flex-initial px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all",
-                billing === "annual"
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-foreground/70 hover:text-foreground"
-              )}
-              onClick={() => setBilling("annual")}
-            >
-              Annually (Save 15%)
-            </button>
-            <button
-              className={cn(
-                "flex-1 sm:flex-initial px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all",
-                billing === "monthly"
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-foreground/70 hover:text-foreground"
-              )}
-              onClick={() => setBilling("monthly")}
-            >
-              Monthly
-            </button>
-          </div>
-
-          <div className="flex items-center justify-center gap-3 sm:gap-4 border border-border rounded-full px-4 sm:px-6 py-2 sm:py-2.5 bg-card">
-            <span className="text-xs sm:text-sm font-medium">Users:</span>
-            <button
-              className="hover:bg-secondary rounded-full p-1 transition-colors disabled:opacity-50"
-              onClick={() => setUsers(Math.max(1, users - 1))}
-              disabled={users === 1}
-            >
-              <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            </button>
-            <span className="w-6 sm:w-8 text-center text-sm sm:text-base font-semibold">{users}</span>
-            <button
-              className="hover:bg-secondary rounded-full p-1 transition-colors"
-              onClick={() => setUsers(users + 1)}
-            >
-              <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            </button>
-          </div>
-        </div>
-
         {/* Grid */}
         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {plans.map((plan) => (
-            <PlanCard key={plan.title} plan={plan} billing={billing} users={users} />
+            <PlanCard key={plan.title} plan={plan} billing={billing} />
           ))}
         </div>
 
@@ -241,7 +180,7 @@ export default function PricingSection() {
             Not sure which plan is right for you?
           </p>
           <Button size="lg" variant="outline" asChild>
-            <a href="https://calendar.google.com/calendar/u/0?cid=Y29yYWhhaS50eEBnbWFpbC5jb20" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendly.com/corahai/30min?month=2025-12" target="_blank" rel="noopener noreferrer">
               Schedule a Free Consultation
             </a>
           </Button>

@@ -19,6 +19,7 @@ interface ProductCardProps {
   services: string[];
   addOns: string[];
   isPopular?: boolean;
+  isComingSoon?: boolean;
 }
 
 export function ProductCard({
@@ -28,6 +29,7 @@ export function ProductCard({
   services,
   addOns,
   isPopular = false,
+  isComingSoon = false,
 }: ProductCardProps) {
   const IconComponent = icon === "inbound" ? Phone : PhoneOutgoing;
 
@@ -37,6 +39,11 @@ export function ProductCard({
         {isPopular && (
           <Badge variant="default" className="bg-foreground text-background w-fit text-xs sm:text-sm">
             Most Popular
+          </Badge>
+        )}
+        {isComingSoon && (
+          <Badge variant="outline" className="border-foreground text-foreground w-fit text-xs sm:text-sm">
+            Coming Soon
           </Badge>
         )}
         <div className="flex items-start gap-2 sm:gap-3">

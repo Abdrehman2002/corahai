@@ -156,7 +156,7 @@ export function PricingNew() {
             Every business is different. Let's discuss your specific needs and create a custom solution that delivers maximum ROI for your operation.
           </p>
           <a
-            href="https://calendar.google.com/calendar/u/0?cid=Y29yYWhhaS50eEBnbWFpbC5jb20"
+            href="https://calendly.com/corahai/30min?month=2025-12"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-4 bg-primary text-primary-foreground rounded-full text-lg font-semibold shadow-medium hover:opacity-90 transition-all duration-200"

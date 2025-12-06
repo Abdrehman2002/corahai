@@ -48,16 +48,19 @@ export function AboutFounder() {
           >
             <div className="space-y-4 text-foreground/80 text-base md:text-lg leading-relaxed">
               <p>
-                I'm a 19-year-old entrepreneur from the Rio Grande Valley, and CORAH is my way of bringing cutting-edge AI to the community I grew up in. I was raised in South Texas in a tight-knit community where everyone knows everyone, and where hard work and family come first. My parents instilled in me discipline, faith, and a relentless work ethic, and those values have shaped everything I do.
+                My name is Jonathan Daniel Cuellar, and the Rio Grande Valley is home. I grew up in a small, tight-knit community in South Texas where people work unbelievably hard—often harder than most will ever understand—yet still struggle to get ahead. Seeing friends, neighbors, and families put everything into their businesses and still barely make enough shaped how I view work, opportunity, and responsibility.
               </p>
               <p>
-                Growing up, I was always drawn to entrepreneurship and technology. I watched my dad run his own business, and I was fascinated by the idea of building something from the ground up. That fascination led me to start CORAH in 2025, during my freshman year of college. While my peers were settling into dorm life, I was building a company that I believed could change the way small businesses operate in the Valley.
+                My parents are two of the greatest blessings in my life. They gave me discipline, respect, and faith, and encouraged the belief that with enough work, anything is possible. They sacrificed for me and my siblings, supported ambitions that didn't always make sense, and created an environment where I felt capable of doing something meaningful.
               </p>
               <p>
-                CORAH is more than just a business to me—it's a mission. The Rio Grande Valley is full of hardworking entrepreneurs who deserve the same tools and technologies as businesses in bigger cities. AI is revolutionizing the way companies interact with their customers, and I want every business owner in the Valley to have access to that innovation. Whether it's a dental office in McAllen, a law firm in Brownsville, or a salon in Harlingen, CORAH is here to help them stay connected, professional, and ahead of the curve.
+                Growing up, I was quiet, introverted, curious, and always trying to solve problems in my own way. Technology and entrepreneurship fascinated me, and I always felt I was meant to build something of my own. I did well in school, but the idea of simply taking a traditional path into a high-finance desk job never fulfilled me. I wanted more—not just money, but impact.
               </p>
               <p>
-                Outside of CORAH, I'm a BJJ athlete, a gym rat, and someone who deeply values faith and family. I believe in working hard, staying grounded, and never forgetting where I came from. My goal is simple: CORAH in every business across the Rio Grande Valley. I'm just getting started.
+                In 2025, at 19 and a freshman in college, I created CORAH because I felt called to. As AI changed the world, the Valley was being left behind. Businesses still used old methods while cities like Dallas rapidly advanced. I wanted the RGV not just to catch up, but to compete.
+              </p>
+              <p>
+                Outside of business, my life is centered around faith, self-improvement, discipline, and family. My journey hasn't been perfect, but purposeful. My vision is simple: I want CORAH in every business across the Rio Grande Valley—to help this community evolve, grow, and prove it is a place of innovation, opportunity, and ambition.
               </p>
             </div>
           </motion.div>

@@ -85,6 +85,7 @@ export function Products() {
               icon="outbound"
               services={outboundServices}
               addOns={outboundAddOns}
+              isComingSoon={true}
             />
           </div>
         </div>
