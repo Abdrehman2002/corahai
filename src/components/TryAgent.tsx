@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Phone, Check, PhoneOff } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -44,10 +45,19 @@ export function TryAgent() {
   const [selected, setSelected] = useState<typeof AGENTS[0] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [callStatus, setCallStatus] = useState<"idle" | "calling" | "connected" | "ended">("idle");
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
 
   const handleSelect = (agent: typeof AGENTS[0]) => {
     setSelected(agent);
     setIsOpen(false);
+  };
+
+  const handleToggle = () => {
+    if (buttonRef.current) {
+      setButtonRect(buttonRef.current.getBoundingClientRect());
+    }
+    setIsOpen(!isOpen);
   };
 
   const startCall = async () => {
@@ -115,16 +125,16 @@ export function TryAgent() {
   };
 
   return (
-    <section className="py-16 bg-secondary/30">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-16 mb-96 bg-secondary/30 relative z-50 overflow-visible">
+      <div className="max-w-5xl mx-auto px-6 overflow-visible">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-card rounded-3xl border border-border shadow-card p-8 md:p-12"
+          className="bg-card rounded-3xl border border-border shadow-card p-8 md:p-12 overflow-visible"
         >
-          <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-8 overflow-visible">
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
                 Try Our Agent for Free
@@ -134,13 +144,14 @@ export function TryAgent() {
               </p>
             </div>
 
-            <div className="flex-1 w-full max-w-md space-y-4">
+            <div className="flex-1 w-full max-w-md space-y-4 relative z-[100]">
               {/* Dropdown */}
               <div className="relative">
                 <motion.button
+                  ref={buttonRef}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={handleToggle}
                   className={cn(
                     "w-full px-6 py-4 rounded-xl border-2 transition-all duration-300 bg-background border-border text-foreground hover:border-primary flex items-center justify-between"
                   )}
@@ -157,13 +168,19 @@ export function TryAgent() {
                 </motion.button>
 
                 <AnimatePresence>
-                  {isOpen && (
+                  {isOpen && buttonRect && createPortal(
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute w-full mt-2 rounded-xl border-2 border-border overflow-hidden shadow-2xl bg-background z-50"
+                      className="fixed rounded-xl border-2 border-border overflow-hidden shadow-2xl bg-background"
+                      style={{
+                        zIndex: 9999,
+                        top: `${buttonRect.bottom + window.scrollY + 8}px`,
+                        left: `${buttonRect.left}px`,
+                        width: `${buttonRect.width}px`,
+                      }}
                     >
                       {AGENTS.map((agent, index) => (
                         <motion.button
@@ -194,7 +211,8 @@ export function TryAgent() {
                           )}
                         </motion.button>
                       ))}
-                    </motion.div>
+                    </motion.div>,
+                    document.body
                   )}
                 </AnimatePresence>
               </div>

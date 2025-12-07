@@ -97,7 +97,7 @@
   }
 
   /* GPU acceleration for smooth scrolling */
-  section {
+  section:not(.no-transform) {
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;

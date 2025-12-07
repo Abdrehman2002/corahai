@@ -171,7 +171,7 @@ export function FeaturedDashboard() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 max-w-5xl mx-auto"
+          className="mt-12 max-w-5xl mx-auto pb-96"
         >
           <div className="bg-card rounded-3xl border border-border shadow-card p-8 md:p-12">
             <div className="flex flex-col md:flex-row items-center gap-8">

@@ -65,7 +65,7 @@ export function ProblemSolutionFeatures() {
         </motion.div>
 
         <div className="bento-grid opacity-0 animate-fade-in animation-delay-100">
-            <BentoItem className="col-span-2 row-span-2 flex flex-col justify-between">
+            <BentoItem className="md:col-span-2 md:row-span-2 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-foreground flex items-center justify-center mb-3 sm:mb-4">
                   <PhoneOff className="w-6 h-6 sm:w-7 sm:h-7 text-background" />
@@ -108,7 +108,7 @@ export function ProblemSolutionFeatures() {
               </p>
             </BentoItem>
 
-            <BentoItem className="row-span-2 flex flex-col justify-between">
+            <BentoItem className="md:row-span-2 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-foreground flex items-center justify-center mb-2 sm:mb-3">
                   <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-background" />
@@ -126,7 +126,7 @@ export function ProblemSolutionFeatures() {
               </div>
             </BentoItem>
 
-            <BentoItem className="col-span-2">
+            <BentoItem className="md:col-span-2">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-foreground flex items-center justify-center mb-2 sm:mb-3">
                 <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-background" />
               </div>
