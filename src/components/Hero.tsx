@@ -67,11 +67,12 @@ export function Hero() {
             <div
               className="w-full h-full scale-110"
               style={{
-                userSelect: 'none',
-                touchAction: 'none'
+                userSelect: 'none'
               }}
-              onMouseDown={(e) => e.preventDefault()}
-              onTouchStart={(e) => e.preventDefault()}
+              onMouseDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
+              onDragStart={(e) => e.preventDefault()}
             >
               <Spline
                 scene="https://prod.spline.design/CXF69xuCfWVJE4Wu/scene.splinecode"

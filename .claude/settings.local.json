@@ -11,7 +11,8 @@
       "Bash(npm install:*)",
       "Bash(npm run server:*)",
       "Bash(tasklist:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd comprehensive onboarding system with Google Sheets integration\n\nMajor Features:\n- Created full onboarding form with 29 fields for new business clients\n- Integrated Google Sheets API for automatic data submission\n- Added video showcase with dashboard screenshot thumbnail\n- Made 3D Spline background non-draggable while preserving cursor interaction\n- Added Onboarding link to navigation bar\n\nTechnical Changes:\n- Added googleapis package for Google Sheets integration\n- Created Onboarding.tsx page with form validation and conditional fields\n- Updated server.js with /api/submit-onboarding endpoint\n- Fixed Google Sheets column mapping (29 columns A-AC)\n- Added ONBOARDING_SETUP.md and GOOGLE_SHEET_STRUCTURE.md documentation\n- Modified Hero.tsx to prevent 3D background dragging\n- Updated FeaturedDashboard.tsx to use video with poster image\n- Added route for /onboarding in App.tsx\n\nBug Fixes:\n- Fixed column alignment issues in Google Sheets data submission\n- Added missing current_phone_provider and existing_business_number fields\n- Corrected rowData array to match exact sheet structure\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []
