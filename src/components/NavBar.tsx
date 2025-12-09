@@ -8,6 +8,7 @@ const navItems = [
   { name: "Pricing", href: "#pricing" },
   { name: "Industries", href: "#who-we-serve" },
   { name: "Founder", href: "#about-founder" },
+  { name: "Onboarding", href: "/onboarding" },
 ];
 
 export function NavBar() {

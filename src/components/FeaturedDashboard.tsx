@@ -4,6 +4,7 @@ import { ChevronDown, Phone, Check, PhoneOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RetellWebClient } from "retell-client-js-sdk";
 import dashboardScreenshot from "@/assets/dashboard-screenshot.png";
+import corahVideo from "@/assets/corahvideo.mp4";
 
 const AGENTS = [
   {
@@ -154,13 +155,17 @@ export function FeaturedDashboard() {
               <div className="flex-1 h-7 bg-secondary rounded-lg ml-3" />
             </div>
 
-            {/* Screenshot */}
+            {/* Video with Screenshot Thumbnail */}
             <div className="rounded-2xl overflow-hidden border border-border">
-              <img
-                src={dashboardScreenshot}
-                alt="CORAH Admin Dashboard showing call analytics, revenue metrics, and appointment status"
+              <video
+                src={corahVideo}
+                poster={dashboardScreenshot}
+                controls
                 className="w-full h-auto object-cover"
-              />
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </motion.div>

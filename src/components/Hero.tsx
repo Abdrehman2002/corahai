@@ -2,6 +2,7 @@ import { Suspense, Component, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { NavBar } from "./NavBar";
 import Spline from "@splinetool/react-spline";
+import type { SPEObject, Application } from "@splinetool/runtime";
 
 // Error Boundary to catch Spline errors
 class SplineErrorBoundary extends Component<
@@ -57,14 +58,25 @@ function InteractiveBackground() {
 export function Hero() {
   return (
     <header className="relative w-full min-h-screen overflow-hidden bg-background">
-      {/* Spline 3D Background - Full screen, interactive */}
+      {/* Spline 3D Background - Responds to cursor but not clickable/draggable */}
       <div className="absolute -inset-10 md:-inset-20">
         <SplineErrorBoundary
           fallback={<InteractiveBackground />}
         >
           <Suspense fallback={<InteractiveBackground />}>
-            <div className="w-full h-full scale-110">
-              <Spline scene="https://prod.spline.design/CXF69xuCfWVJE4Wu/scene.splinecode" />
+            <div
+              className="w-full h-full scale-110"
+              style={{
+                userSelect: 'none',
+                touchAction: 'none'
+              }}
+              onMouseDown={(e) => e.preventDefault()}
+              onTouchStart={(e) => e.preventDefault()}
+            >
+              <Spline
+                scene="https://prod.spline.design/CXF69xuCfWVJE4Wu/scene.splinecode"
+                style={{ cursor: 'default' }}
+              />
             </div>
           </Suspense>
         </SplineErrorBoundary>

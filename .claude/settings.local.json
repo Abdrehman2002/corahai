@@ -4,7 +4,14 @@
       "Bash(npm uninstall:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate: About Founder bio, Calendly integration, range pricing, Coming Soon badge, mobile responsiveness fixes\n\n- Updated About Founder biography with new text focusing on RGV community and CORAH vision\n- Changed \"Users\" label to \"Locations\" in pricing section\n- Replaced all Google Calendar links with Calendly link\n- Updated pricing to show ranges instead of calculated prices, removed billing toggle and location multiplier\n- Added \"Coming Soon\" badge to Outbound Voice Agent card\n- Fixed mobile responsiveness issues in ProblemSolutionFeatures section (reduced padding, icon sizes, text sizes)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate: About Founder bio, Calendly integration, range pricing, Coming Soon badge, mobile responsiveness fixes\n\n- Updated About Founder biography with new text focusing on RGV community and CORAH vision\n- Changed \"Users\" label to \"Locations\" in pricing section\n- Replaced all Google Calendar links with Calendly link\n- Updated pricing to show ranges instead of calculated prices, removed billing toggle and location multiplier\n- Added \"Coming Soon\" badge to Outbound Voice Agent card\n- Fixed mobile responsiveness issues in ProblemSolutionFeatures section (reduced padding, icon sizes, text sizes)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix dropdown visibility and improve mobile layout\n\n- Added bottom padding to FeaturedDashboard Try Agent section for dropdown visibility\n- Updated ProblemSolutionFeatures to use normal stacked cards on mobile (responsive grid spans)\n- Added Portal implementation to TryAgent component for future use\n- Minor CSS optimizations in index.css\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run server:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []
