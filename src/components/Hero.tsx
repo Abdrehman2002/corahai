@@ -59,13 +59,13 @@ export function Hero() {
   return (
     <header className="relative w-full min-h-screen overflow-hidden bg-background">
       {/* Spline 3D Background - Responds to cursor but not clickable/draggable */}
-      <div className="absolute -inset-10 md:-inset-20">
+      <div className="absolute inset-0 md:-inset-10 lg:-inset-20">
         <SplineErrorBoundary
           fallback={<InteractiveBackground />}
         >
           <Suspense fallback={<InteractiveBackground />}>
             <div
-              className="w-full h-full scale-110"
+              className="w-full h-full scale-100 md:scale-105 lg:scale-110"
               style={{
                 userSelect: 'none'
               }}
