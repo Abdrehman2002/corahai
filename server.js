@@ -93,6 +93,8 @@ app.post("/api/submit-onboarding", async (req, res) => {
       current_phone_provider,
       existing_business_number,
       forward_to_number,
+      package_interest,
+      estimated_call_volume,
       offers_appointments,
       scheduling_platform,
       schedule_access_instructions,
@@ -109,9 +111,10 @@ app.post("/api/submit-onboarding", async (req, res) => {
       acknowledge_setup_fee,
       acknowledge_monthly_billing,
       signature_full_name,
+      calendly_scheduled,
     } = req.body;
 
-    // Create row data - 29 column structure (A-AC) matching ONBOARDING_SETUP.md
+    // Create row data - 31 column structure (A-AE) with new fields
     const rowData = [
       legal_business_name || "",              // 1. A
       dba_name || "",                          // 2. B
@@ -126,28 +129,31 @@ app.post("/api/submit-onboarding", async (req, res) => {
       current_phone_provider || "",            // 11. K
       existing_business_number || "",          // 12. L
       forward_to_number || "",                 // 13. M
-      offers_appointments || "",               // 14. N
-      scheduling_platform || "",               // 15. O
-      schedule_access_instructions || "",      // 16. P
-      top_services || "",                      // 17. Q
-      deposit_policy || "",                    // 18. R
-      cancellation_policy_summary || "",       // 19. S
-      voice_style || "",                       // 20. T
-      voice_style_custom || "",                // 21. U
-      custom_greeting || "",                   // 22. V
-      escalation_rules || "",                  // 23. W
-      sms_reminders_enabled || "",             // 24. X
-      sms_message_types || "",                 // 25. Y
-      corah_package || "",                     // 26. Z
-      acknowledge_setup_fee || "",             // 27. AA
-      acknowledge_monthly_billing || "",       // 28. AB
-      signature_full_name || "",               // 29. AC
+      package_interest || "",                  // 14. N (NEW)
+      estimated_call_volume || "",             // 15. O (NEW)
+      offers_appointments || "",               // 16. P
+      scheduling_platform || "",               // 17. Q
+      schedule_access_instructions || "",      // 18. R
+      top_services || "",                      // 19. S
+      deposit_policy || "",                    // 20. T
+      cancellation_policy_summary || "",       // 21. U
+      voice_style || "",                       // 22. V
+      voice_style_custom || "",                // 23. W
+      custom_greeting || "",                   // 24. X
+      escalation_rules || "",                  // 25. Y
+      sms_reminders_enabled || "",             // 26. Z
+      sms_message_types || "",                 // 27. AA
+      corah_package || "",                     // 28. AB
+      acknowledge_setup_fee || "",             // 29. AC
+      acknowledge_monthly_billing || "",       // 30. AD
+      signature_full_name || "",               // 31. AE
+      calendly_scheduled || "",                // 32. AF (NEW)
     ];
 
     // Append row to Google Sheet
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
-      range: "Sheet1!A:AC", // Columns A through AC (29 columns)
+      range: "Sheet1!A:AF", // Columns A through AF (32 columns)
       valueInputOption: "RAW",
       requestBody: {
         values: [rowData],

@@ -17,6 +17,8 @@ interface FormData {
   current_phone_provider: string;
   existing_business_number: string;
   forward_to_number: string;
+  package_interest: string;
+  estimated_call_volume: string;
   offers_appointments: string;
   scheduling_platform: string;
   schedule_access_instructions: string;
@@ -33,6 +35,7 @@ interface FormData {
   acknowledge_setup_fee: string;
   acknowledge_monthly_billing: string;
   signature_full_name: string;
+  calendly_scheduled: string;
 }
 
 export default function Onboarding() {
@@ -50,6 +53,8 @@ export default function Onboarding() {
     current_phone_provider: "",
     existing_business_number: "",
     forward_to_number: "",
+    package_interest: "",
+    estimated_call_volume: "",
     offers_appointments: "",
     scheduling_platform: "",
     schedule_access_instructions: "",
@@ -66,6 +71,7 @@ export default function Onboarding() {
     acknowledge_setup_fee: "no",
     acknowledge_monthly_billing: "no",
     signature_full_name: "",
+    calendly_scheduled: "no",
   });
 
   const [smsTypes, setSmsTypes] = useState<string[]>([]);
@@ -396,6 +402,109 @@ export default function Onboarding() {
             </div>
           </section>
 
+          {/* Package Interest & Call Volume */}
+          <section>
+            <h2 className="text-2xl font-bold text-foreground mb-6">
+              Package Interest & Call Volume
+            </h2>
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Which CORAH package are you interested in? *
+                </label>
+                <div className="space-y-3">
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="package_interest"
+                      value="Inbound"
+                      checked={formData.package_interest === "Inbound"}
+                      onChange={handleChange}
+                      required
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">Inbound Voice Agent</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="package_interest"
+                      value="Outbound"
+                      checked={formData.package_interest === "Outbound"}
+                      onChange={handleChange}
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">Outbound Voice Agent</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="package_interest"
+                      value="Not sure yet"
+                      checked={formData.package_interest === "Not sure yet"}
+                      onChange={handleChange}
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">Not sure yet</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Estimated call volume per day *
+                </label>
+                <div className="space-y-3">
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="estimated_call_volume"
+                      value="< 15"
+                      checked={formData.estimated_call_volume === "< 15"}
+                      onChange={handleChange}
+                      required
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">&lt; 15 calls/day</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="estimated_call_volume"
+                      value="15-40"
+                      checked={formData.estimated_call_volume === "15-40"}
+                      onChange={handleChange}
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">15–40 calls/day</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="estimated_call_volume"
+                      value="40-80"
+                      checked={formData.estimated_call_volume === "40-80"}
+                      onChange={handleChange}
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">40–80 calls/day</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border-2 border-border hover:border-primary transition-colors">
+                    <input
+                      type="radio"
+                      name="estimated_call_volume"
+                      value="80+"
+                      checked={formData.estimated_call_volume === "80+"}
+                      onChange={handleChange}
+                      className="w-4 h-4"
+                    />
+                    <span className="text-foreground font-medium">80+ calls/day</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Scheduling & Services */}
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-6">
@@ -658,8 +767,10 @@ export default function Onboarding() {
                   className="w-full px-4 py-3 rounded-xl border-2 border-border bg-background text-foreground focus:border-primary outline-none transition-colors appearance-none"
                 >
                   <option value="">Select...</option>
-                  <option value="Starter">Starter</option>
-                  <option value="Professional">Professional</option>
+                  <option value="Micro">Micro</option>
+                  <option value="Small">Small</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High Volume">High Volume</option>
                   <option value="Enterprise">Enterprise</option>
                 </select>
               </div>
@@ -723,6 +834,30 @@ export default function Onboarding() {
                   By typing your name, you agree to our terms and conditions
                 </p>
               </div>
+            </div>
+          </section>
+
+          {/* Schedule Onboarding Call */}
+          <section>
+            <h2 className="text-2xl font-bold text-foreground mb-6">
+              Schedule Your Onboarding Call
+            </h2>
+            <div className="bg-secondary/30 rounded-2xl p-6">
+              <p className="text-foreground/70 mb-4">
+                Schedule a call with our team to finalize your setup and answer any questions.
+              </p>
+              <div className="rounded-xl overflow-hidden border-2 border-border">
+                <iframe
+                  src="https://calendly.com/your-calendly-link"
+                  width="100%"
+                  height="700"
+                  title="Schedule Onboarding Call"
+                  className="bg-background border-0"
+                ></iframe>
+              </div>
+              <p className="text-xs text-foreground/60 mt-4">
+                * You can also schedule this call after submitting the form
+              </p>
             </div>
           </section>
 

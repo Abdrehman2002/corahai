@@ -15,7 +15,7 @@ The CORAH onboarding system allows new businesses to fill out a comprehensive fo
 ### Sheet Details
 - **Sheet ID**: `1fOhwwj94G6LFfcJA1clPnGqbLOQ244IKM4DGhtDqk8I`
 - **Sheet Name**: `Sheet1`
-- **Columns** (29 total, A-AC):
+- **Columns** (32 total, A-AF):
 
 1. legal_business_name
 2. dba_name
@@ -30,22 +30,25 @@ The CORAH onboarding system allows new businesses to fill out a comprehensive fo
 11. current_phone_provider
 12. existing_business_number
 13. forward_to_number
-14. offers_appointments
-15. scheduling_platform
-16. schedule_access_instructions
-17. top_services
-18. deposit_policy
-19. cancellation_policy_summary
-20. voice_style
-21. voice_style_custom
-22. custom_greeting
-23. escalation_rules
-24. sms_reminders_enabled
-25. sms_message_types
-26. corah_package
-27. acknowledge_setup_fee
-28. acknowledge_monthly_billing
-29. signature_full_name
+14. **package_interest** (NEW: Inbound/Outbound/Not sure yet)
+15. **estimated_call_volume** (NEW: < 15, 15-40, 40-80, 80+)
+16. offers_appointments
+17. scheduling_platform
+18. schedule_access_instructions
+19. top_services
+20. deposit_policy
+21. cancellation_policy_summary
+22. voice_style
+23. voice_style_custom
+24. custom_greeting
+25. escalation_rules
+26. sms_reminders_enabled
+27. sms_message_types
+28. **corah_package** (Updated: Micro, Small, Medium, High Volume, Enterprise)
+29. acknowledge_setup_fee
+30. acknowledge_monthly_billing
+31. signature_full_name
+32. **calendly_scheduled** (NEW: yes/no)
 
 ## Environment Setup
 
@@ -135,21 +138,29 @@ Once both servers are running:
 - Current provider and existing number (conditional)
 - Forward-to number for escalations
 
-### 3. Scheduling & Services
+### 3. Package Interest & Call Volume (NEW)
+- Which CORAH package interested in (Inbound/Outbound/Not sure yet)
+- Estimated call volume per day (< 15, 15-40, 40-80, 80+)
+
+### 4. Scheduling & Services
 - Appointment offering status
 - Scheduling platform (conditional)
 - Top services, deposit policy, cancellation policy
 
-### 4. Voice Agent & SMS Settings
+### 5. Voice Agent & SMS Settings
 - Voice style (Professional, Friendly, Casual, Formal, Custom)
 - Custom greeting
 - Escalation rules
 - SMS reminders and message types
 
-### 5. Package & Billing
-- CORAH package selection
+### 6. Package & Billing
+- CORAH package selection (Micro, Small, Medium, High Volume, Enterprise)
 - Acknowledgment checkboxes
 - Digital signature
+
+### 7. Schedule Onboarding Call (NEW)
+- Embedded Calendly scheduling widget
+- Optional scheduling for onboarding call with team
 
 ## Testing
 
