@@ -848,7 +848,7 @@ export default function Onboarding() {
               </p>
               <div className="rounded-xl overflow-hidden border-2 border-border">
                 <iframe
-                  src="https://calendly.com/your-calendly-link"
+                  src="https://calendly.com/corahai/30min"
                   width="100%"
                   height="700"
                   title="Schedule Onboarding Call"
